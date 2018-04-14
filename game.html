@@ -1,0 +1,68 @@
+<style>
+	#container {
+		border: 2px blue solid;
+		position: relative;
+		margin: 0 auto;
+		width: 800px;
+		height: 400px;
+	}
+
+	#panel {
+		margin-top: 40px;
+		text-align: center;
+	}
+
+	#panel > button {
+		color: yellow;
+		font-size: 18px;
+		background: blue;
+		border-radius: 4px;
+	}
+
+	#container > div.ball {
+		position: absolute;
+		top: 17px;
+		left: 39px;
+		display: block;
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		background: red;
+		transition: transform 5 ease-in;
+	}
+</style>
+
+<div id="container">
+	<div class="ball"></div>
+</div>
+
+<div id="panel">
+	<button>Start</button>
+<div>
+
+<script type="text/javascript">
+	const game = (function() {
+		let score = 0;
+		let ballEl;
+
+		return {
+			start: function(el) {
+				console.log('Let the Games begin');
+				ballEl = el;
+
+				ballEl.style.transform='translate(20px, 10px)';
+			}
+		}
+
+	})();
+
+	document.addEventListener("DOMContentLoaded", function(event) {
+    	console.log("DOM fully loaded and parsed");
+
+    	document.querySelector('#panel > button').addEventListener('click', function() {
+    		console.log('start');
+    		game.start(document.querySelector('#container > div.ball'));
+    	})
+  	});
+</script>	
+
